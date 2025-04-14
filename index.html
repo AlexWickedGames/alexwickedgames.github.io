@@ -6,25 +6,82 @@
   <title>alex's wicked games</title>
   <style>
     body {
-      background-color: #1e1e1e;
-      color: white;
       font-family: Arial, sans-serif;
       padding: 40px;
       line-height: 1.6;
+      transition: background-color 0.3s, color 0.3s;
     }
-    h1 {
-      color: #ffffff;
+
+    h1, p, a {
+      transition: color 0.3s;
     }
+
     a {
+      color: #7aa9ff;
+    }
+
+    .toggle-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #444;
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      cursor: pointer;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+
+    .light-mode {
+      background-color: #f4f4f4;
+      color: #1e1e1e;
+    }
+
+    .light-mode a {
+      color: #3366cc;
+    }
+
+    .dark-mode {
+      background-color: #1e1e1e;
+      color: white;
+    }
+
+    .dark-mode a {
       color: #7aa9ff;
     }
   </style>
 </head>
 <body>
   <h1>This is MY (alex's) website for MY games.</h1>
-  <p>This is the website where you can conveniently find links that redirect to all my games so you can download them. </p>
-  <p>I might also use this website for potential release dates for games or for just general information about them. </p>
-  <p>Once my first game actually releases, I'll link it at this website, but at the moment, there is nothing really here for you. Check back later. </p>
+  <p>This is the website where you can conveniently find links that redirect to all my games so you can download them.</p>
+  <p>I might also use this website for potential release dates for games or for just general information about them.</p>
+  <p>Once my first game actually releases, I'll link it at this website, but at the moment, there is nothing really here for you. Check back later.</p>
   <p><a href="privacy.html">privacy policy</a></p>
+
+  <button class="toggle-btn" onclick="toggleTheme()">Toggle Theme</button>
+
+  <script>
+    const body = document.body;
+    const savedTheme = localStorage.getItem('theme');
+
+    if (savedTheme === 'light') {
+      body.classList.add('light-mode');
+    } else {
+      body.classList.add('dark-mode');
+    }
+
+    function toggleTheme() {
+      if (body.classList.contains('dark-mode')) {
+        body.classList.remove('dark-mode');
+        body.classList.add('light-mode');
+        localStorage.setItem('theme', 'light');
+      } else {
+        body.classList.remove('light-mode');
+        body.classList.add('dark-mode');
+        localStorage.setItem('theme', 'dark');
+      }
+    }
+  </script>
 </body>
 </html>
