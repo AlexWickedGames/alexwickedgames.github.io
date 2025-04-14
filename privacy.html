@@ -6,16 +6,48 @@
   <title>privacy policy</title>
   <style>
     body {
-      background-color: #1e1e1e;
-      color: white;
       font-family: Arial, sans-serif;
       padding: 40px;
       line-height: 1.6;
+      transition: background-color 0.3s, color 0.3s;
     }
-    h1 {
-      color: #ffffff;
+
+    h1, p, a {
+      transition: color 0.3s;
     }
+
     a {
+      color: #7aa9ff;
+    }
+
+    .toggle-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #444;
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      cursor: pointer;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+
+    .light-mode {
+      background-color: #f4f4f4;
+      color: #1e1e1e;
+    }
+
+    .light-mode a {
+      color: #3366cc;
+    }
+
+    .dark-mode {
+      background-color: #1e1e1e;
+      color: white;
+    }
+
+    .dark-mode a {
       color: #7aa9ff;
     }
   </style>
@@ -25,5 +57,30 @@
   <p>None of my games collect any personal data from anyone.</p>
   <p>Some "technical" data, such as your Device ID or crash logs, may be sent through third-party services like Epic Games (EOS) for the purpose of multiplayer functionality or debugging.</p>
   <p>I will not store, sell, or share any personally identifiable information.</p>
+
+  <button class="toggle-btn" onclick="toggleTheme()">Toggle Theme</button>
+
+  <script>
+    const body = document.body;
+    const savedTheme = localStorage.getItem('theme');
+
+    if (savedTheme === 'light') {
+      body.classList.add('light-mode');
+    } else {
+      body.classList.add('dark-mode');
+    }
+
+    function toggleTheme() {
+      if (body.classList.contains('dark-mode')) {
+        body.classList.remove('dark-mode');
+        body.classList.add('light-mode');
+        localStorage.setItem('theme', 'light');
+      } else {
+        body.classList.remove('light-mode');
+        body.classList.add('dark-mode');
+        localStorage.setItem('theme', 'dark');
+      }
+    }
+  </script>
 </body>
 </html>
