@@ -2,5 +2,5 @@
 
 This is the public website for the games I have made.
 
-- Live site:
+- Live site: https://alexwickedgames.github.io/alexwickedgames/
 - Privacy Policy:
